@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\EnviromentalScripts\ButtonScript.cs" />
      <Compile Include="Assets\Scripts\EnviromentalScripts\CameraScript.cs" />
      <Compile Include="Assets\Scripts\EnviromentalScripts\Checkpointscript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\DoorScript.cs" />
      <Compile Include="Assets\Scripts\EnviromentalScripts\HealthUILifeImageScript.cs" />
      <Compile Include="Assets\Scripts\EnviromentalScripts\KillPlayerScript.cs" />
      <Compile Include="Assets\Scripts\EnviromentalScripts\LevelManager.cs" />

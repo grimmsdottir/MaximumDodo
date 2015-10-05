@@ -70,6 +70,16 @@ public class EnemyPatrolScript : MonoBehaviour {
 		else 
 			x += moveSpeed * Time.deltaTime * -1;
 		this.transform.position = new Vector3 (x, this.transform.position.y,0);
+        /*
+        if (patrolRight)
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.right * moveSpeed);
+        }
+        else
+        {
+            this.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.left * moveSpeed);
+        }
+         */
 	}
 
 	void OnTriggerEnter2D(Collider2D col)
