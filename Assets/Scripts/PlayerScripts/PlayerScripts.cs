@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerScripts : MonoBehaviour 
@@ -26,9 +27,20 @@ public class PlayerScripts : MonoBehaviour
     [HideInInspector] float airTimer = 0.0f;
     [HideInInspector] float airDuration = 0.28f;
         //Shooting Control Variables
-    [HideInInspector] bool meleeAttack = false;
-    [HideInInspector] float attackTimer = 0.0f;
-    [HideInInspector] float attackCd = 0.3f;
+    enum Weapons
+    {
+        PISTOL = 0,
+        MACHINEGUN,
+        SHOTGUN,
+        ROCKET_LAUNCHER,
+        LAZER
+    }
+    [HideInInspector] Weapons weapon = Weapons.PISTOL;
+    [HideInInspector] int[] weaponAmmo;
+    public GameObject turret;
+    [HideInInspector] GameObject weaponText;
+    [HideInInspector] GameObject ammoText;
+        //Shooting Control Old Variables
         //Life Manager Variables
     [HideInInspector] public int lives = 3;
     [HideInInspector] bool isInvulnarable = false;
@@ -39,50 +51,90 @@ public class PlayerScripts : MonoBehaviour
 	void Start () 
 	{
 		rb = GetComponent<Rigidbody2D> ();
-		GameObject.Find ("AttackTrigger").GetComponent<SpriteRenderer>().enabled = false;
-
-
+    //Initialize ammo array
+        weaponAmmo = new int[5];
+        for (int i=0;i<weaponAmmo.Length;i++)
+        {
+            weaponAmmo[i] = 0;
+        }
+    //Get UI elements
+        weaponText = GameObject.Find("WeaponText");
+        ChangeWeaponText("PISTOL");
+        ammoText = GameObject.Find("AmmoText");
+    //debug
+        weaponAmmo[1] = 9;
 	}
 
 	void FixedUpdate()
 	{
         MovementControl();
-        ShootingControl();
-        InvulnarableFrames();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
+        ShootingControl();
+        InvulnarableFrames();
+        UpdateAmmoText();
 	}
-    
+
     void ShootingControl()
     {
-        if (Input.GetMouseButton(1) && !meleeAttack)
+    //Weapon Selection Control
+        if (Input.GetKeyDown(KeyCode.Alpha1)) 
         {
-            meleeAttack = true;
-            attackTimer = attackCd;
-
-            attackTrigger.enabled = true;
-            GameObject.Find("AttackTrigger").GetComponent<SpriteRenderer>().enabled = true;
+            weapon = Weapons.PISTOL;
+            ChangeWeaponText("PISTOL");
         }
-
-        if (meleeAttack)
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (attackTimer > 0)
+            weapon = Weapons.MACHINEGUN;
+            ChangeWeaponText("MACHINEGUN");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            weapon = Weapons.SHOTGUN;
+            ChangeWeaponText("SHOTGUN");
+        }
+    //Check For ammo
+        if (Input.GetMouseButton(0))
+        {
+            if (weapon == Weapons.PISTOL)
             {
-                attackTimer -= Time.deltaTime;
+                turret.GetComponent<TurretScript>().ShootWeapon(0);
             }
-            else
+            if (weaponAmmo[(int)weapon] > 0 && weapon != Weapons.PISTOL)
             {
-                meleeAttack = false;
-                attackTrigger.enabled = false;
-                GameObject.Find("AttackTrigger").GetComponent<SpriteRenderer>().enabled = false;
+                turret.GetComponent<TurretScript>().ShootWeapon((int)weapon);
             }
         }
     }
-
+    void ChangeWeaponText(string weaponTextString)
+    {
+        weaponText.GetComponent<Text>().text = weaponTextString;
+    }
+    void UpdateAmmoText()
+    {
+        switch((int)weapon)
+        {
+            case 0:
+                //Pistol
+                ammoText.GetComponent<Text>().text = "INFINITY";
+                break;
+            case 1:
+                //Machinegun
+                ammoText.GetComponent<Text>().text = weaponAmmo[1].ToString();
+                break;
+            case 2:
+                //Shotgun
+                ammoText.GetComponent<Text>().text = weaponAmmo[2].ToString();
+                break;
+        }
+    }
+    public void ChangeAmmo(int weaponType, int ammount)
+    {
+        weaponAmmo[weaponType] += ammount;
+    }
     void MovementControl()
     {
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);

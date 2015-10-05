@@ -46,26 +46,29 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\HealthUILifeImageScript.cs" />
-     <Compile Include="Assets\Scripts\ArmScript.cs" />
-     <Compile Include="Assets\Scripts\BulletEnemtPistolScript.cs" />
-     <Compile Include="Assets\Scripts\ButtonScript.cs" />
-     <Compile Include="Assets\Scripts\CameraScript.cs" />
-     <Compile Include="Assets\Scripts\Checkpointscript.cs" />
-     <Compile Include="Assets\Scripts\DestroyBulletScript.cs" />
-     <Compile Include="Assets\Scripts\EnemyBulletScript.cs" />
-     <Compile Include="Assets\Scripts\EnemyHealthManager.cs" />
-     <Compile Include="Assets\Scripts\EnemyPatrolScript.cs" />
-     <Compile Include="Assets\Scripts\EnemyPistol.cs" />
-     <Compile Include="Assets\Scripts\HealthManager.cs" />
-     <Compile Include="Assets\Scripts\KillPlayerScript.cs" />
-     <Compile Include="Assets\Scripts\LevelManager.cs" />
-     <Compile Include="Assets\Scripts\MoveForwardScript.cs" />
-     <Compile Include="Assets\Scripts\MovingPlatform.cs" />
-     <Compile Include="Assets\Scripts\PlayerScripts.cs" />
-     <Compile Include="Assets\Scripts\PlayerShootScript.cs" />
-     <Compile Include="Assets\Scripts\SwitchWeaponScript.cs" />
-     <Compile Include="Assets\Scripts\attackTriggerScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\EnemyHealthManager.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\EnemyPatrolScript.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\EnemyPistol.cs" />
+     <Compile Include="Assets\Scripts\EnemyScripts\HealthManager.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\AmmoBoxScript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\ButtonScript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\CameraScript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\Checkpointscript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\HealthUILifeImageScript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\KillPlayerScript.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\EnviromentalScripts\MovingPlatform.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\ArmScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\PlayerScripts.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\PlayerShootScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\SwitchWeaponScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\TurretScript.cs" />
+     <Compile Include="Assets\Scripts\PlayerScripts\attackTriggerScript.cs" />
+     <Compile Include="Assets\Scripts\ProjectileScripts\BulletEnemtPistolScript.cs" />
+     <Compile Include="Assets\Scripts\ProjectileScripts\DestroyBulletScript.cs" />
+     <Compile Include="Assets\Scripts\ProjectileScripts\EnemyBulletScript.cs" />
+     <Compile Include="Assets\Scripts\ProjectileScripts\MoveForwardScript.cs" />
+     <Compile Include="Assets\Scripts\ProjectileScripts\PlayerBulletScript.cs" />
      <Compile Include="Assets\Useless\BulletScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

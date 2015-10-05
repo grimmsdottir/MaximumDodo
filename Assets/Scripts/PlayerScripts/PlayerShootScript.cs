@@ -18,7 +18,7 @@ public class PlayerShootScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		
-		Debug.Log ("Who have me : " + gameObject.name);
+		//Debug.Log ("Who have me : " + gameObject.name);
 	}
 	
 	// Update is called once per frame

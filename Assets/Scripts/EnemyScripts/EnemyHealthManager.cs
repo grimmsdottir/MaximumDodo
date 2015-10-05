@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyHealthManager : MonoBehaviour {
+public class EnemyHealthManager : MonoBehaviour 
+{
 
 	public int enemyHealth;
+    public GameObject itemToDropPrefab;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 	
 	}
 	
@@ -16,6 +19,7 @@ public class EnemyHealthManager : MonoBehaviour {
 	{
 		if (enemyHealth <= 0) 
 		{
+            Instantiate(itemToDropPrefab, this.transform.position, Quaternion.identity);
 			Destroy (gameObject);
 		}
 	}

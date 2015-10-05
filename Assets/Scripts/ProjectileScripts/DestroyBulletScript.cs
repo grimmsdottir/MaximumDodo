@@ -14,4 +14,6 @@ public class DestroyBulletScript : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+
 }
